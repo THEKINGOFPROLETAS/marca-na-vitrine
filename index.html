@@ -200,24 +200,42 @@ footer p+p{margin-top:10px}
 
 
 /* brand case */
-.case{margin-top:64px;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#4c5b6e}
-.case .logo{padding:34px 28px 10px}
-.case .logo img{width:min(78%,340px);margin:0 auto;filter:none}
-.ig{background:#0f0f11;margin:18px;border-radius:18px;padding:18px;border:1px solid rgba(255,255,255,.08)}
-.ig .pf{display:flex;align-items:center;gap:14px}
-.ig .pf img{width:64px;height:64px;border-radius:50%}
-.ig .pf b{display:block;font-size:15px}
-.ig .pf span{font-size:12.5px;color:var(--muted)}
-.ig .hl{display:flex;gap:12px;margin-top:16px;overflow-x:auto;scrollbar-width:none}
-.ig .hl img{width:52px;height:52px;border-radius:50%;flex:none;border:1.5px solid rgba(255,255,255,.18);padding:2px;background:#0f0f11}
-.ig .post{margin-top:16px;border-radius:10px;overflow:hidden;aspect-ratio:4/5}
-.ig .post img{width:100%;height:100%;object-fit:cover}
-.case .cap{padding:4px 22px 22px;color:#e9e6df}
+.case{margin-top:64px;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#4c5b6e;color:#e9e6df}
+.case .logo{padding:30px 24px 6px}
+.case .logo img{width:min(78%,340px);height:auto;margin:0 auto}
+.case .cap{padding:4px 22px 18px}
 .case .cap .mono{color:#c9cfd8}
 .case .cap h3{font-family:var(--serif);font-weight:400;font-size:32px;line-height:1.05;margin-top:6px}
 .case .cap p{color:#dde1e7;margin-top:8px;font-size:15px}
-@media (min-width:760px){.case{display:grid;grid-template-columns:1fr 1fr;align-items:center}.case .cap{grid-column:1}.case .logo{grid-column:1;grid-row:1}.ig{grid-column:2;grid-row:1/3;margin:28px}}
+.man{display:grid;grid-auto-flow:column;grid-auto-columns:86%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 18px 6px;scrollbar-width:none}
+.man::-webkit-scrollbar{display:none}
+.man figure{scroll-snap-align:center;margin:0}
+.man img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:12px;box-shadow:0 18px 40px -18px rgba(0,0,0,.7);background:#e9e4dc}
+.man figcaption{font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#c9cfd8;margin-top:8px}
+.man-hint{padding:6px 18px 20px}.man-hint .mono{color:#c9cfd8}
+@media (min-width:760px){.case-top{display:grid;grid-template-columns:1fr 1.2fr;align-items:center;padding:18px 10px 8px}.man{grid-auto-columns:46%;padding:8px 28px}.man-hint{padding:6px 28px 26px}}
 
+/* whatsapp + instagram + depoimentos */
+.wa-box{margin-top:40px;border-radius:22px;padding:28px 22px;background:linear-gradient(160deg,#0f2a1d,#0b0b0c 70%);border:1px solid rgba(37,211,102,.28)}
+.wa-box h3{font-family:var(--serif);font-weight:400;font-size:30px;line-height:1.08}
+.wa-box h3 em{color:#5be08f}
+.wa-box p{color:var(--muted);margin-top:10px}
+.wa-box ul{list-style:none;margin-top:16px;display:grid;gap:8px}
+.wa-box li{display:flex;gap:10px;align-items:flex-start}
+.wa-box li:before{content:"✓";color:#5be08f;font-weight:700}
+.wa-box .row{display:grid;gap:10px;margin-top:22px}
+.btn.wa{background:#25d366;color:#06240f}
+.btn.ig{background:transparent;color:var(--text);border:1px solid var(--line2)}
+.wa-fab{position:fixed;right:16px;bottom:86px;z-index:55;width:54px;height:54px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(0,0,0,.7);text-decoration:none}
+.wa-fab svg{width:28px;height:28px;fill:#fff}
+.ig-line{display:flex;align-items:center;gap:8px;margin-top:16px;font-size:14px;color:var(--muted)}
+.ig-line a{color:var(--text);font-weight:600;text-decoration:none;border-bottom:1px solid var(--line2)}
+.dep{display:grid;gap:14px}
+.dep figure{margin:0;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#111}
+.dep img{width:100%;height:auto}
+.dep figcaption{padding:10px 14px;font-size:13px;color:var(--muted)}
+@media (min-width:760px){.wa-box{padding:40px}.wa-box .row{grid-template-columns:auto auto;justify-content:start}.dep{grid-template-columns:repeat(3,1fr)}}
+[hidden]{display:none!important}
 
 /* ===== depth layer: real photos, device mockups, parallax ===== */
 .hero{position:relative;overflow:hidden;isolation:isolate}
@@ -338,7 +356,7 @@ footer p+p{margin-top:10px}
   <span class="mono">até 30/11</span>
 </div></div>
 
-<header class="hero"><div class="hero-bg" aria-hidden="true" data-par="0.25"><img src="assets/ph-studio.jpg" alt="" fetchpriority="high"></div><div class="wrap hero-grid">
+<header class="hero"><div class="hero-bg" aria-hidden="true" data-par="0.25"><img src="assets/bg-hero.jpg" alt="" fetchpriority="high"></div><div class="wrap hero-grid">
   <div class="h-head">
     <p class="mono eyebrow rv"><span>Edição de vídeo</span><span>Design</span><span>Social media</span></p>
     <h1 class="split" data-split>Seu perfil, editado como <em>marca grande.</em></h1>
@@ -354,7 +372,7 @@ footer p+p{margin-top:10px}
       </div>
     </div>
     </div>
-    <div class="float f1" data-depth="40" aria-hidden="true"><img src="assets/ph-grade.jpg" alt=""><span>Color grading</span></div>
+    <div class="float f1" data-depth="40" aria-hidden="true"><img src="assets/real-grade.jpg" alt=""><span>Color grading</span></div>
     <div class="float f2" data-depth="-30" aria-hidden="true"><div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span>Legenda + trilha</span></div>
     <div class="float f3" data-depth="22" aria-hidden="true"><b>✓</b><span>Edição iniciada<small>agora mesmo</small></span></div>
     <div class="glow" aria-hidden="true"></div>
@@ -372,6 +390,7 @@ footer p+p{margin-top:10px}
       <a class="btn" href="https://pay.cakto.com.br/ie2r49v_1376035" id="cta-hero">Começar por R$ 27,90 <span class="arr">→</span></a>
       <a class="btn ghost" href="#trabalhos">Ver trabalhos</a>
     </div>
+    <p class="ig-line rv d3">Portfólio no Instagram: <a href="https://www.instagram.com/yannzheus/" target="_blank" rel="noopener">@yannzheus</a></p>
     <div class="count rv d3" aria-label="Tempo até o fim da oferta">
       <div><b id="cd-d">--</b><small>dias</small></div><div><b id="cd-h">--</b><small>horas</small></div><div><b id="cd-m">--</b><small>min</small></div><div><b id="cd-s">--</b><small>seg</small></div>
     </div>
@@ -430,17 +449,23 @@ footer p+p{margin-top:10px}
   <div class="strip-hint"><span class="mono">Arraste para o lado</span><span class="mono">04 vídeos</span></div>
 
   <div class="case rv">
-    <div class="logo"><img src="assets/clube-logo.png" alt="Logo Meu Clube Cariri" loading="lazy" width="800" height="417"></div>
-    <div class="cap">
-      <span class="mono">Case · identidade visual + Instagram</span>
-      <h3>Meu Clube Cariri</h3>
-      <p>Logo, paleta, foto de perfil, 6 capas de destaque e posts de lançamento. Um perfil que parece marca desde o primeiro post.</p>
+    <div class="case-top">
+      <div class="logo"><img src="assets/clube-logo.png" alt="Logo Meu Clube Cariri" loading="lazy" width="1200" height="626"></div>
+      <div class="cap">
+        <span class="mono">Case · manual de marca + Instagram</span>
+        <h3>Meu Clube Cariri</h3>
+        <p>Logo, versões, cores, tipografia, grafismos e o padrão do feed. Tudo num manual de marca para o perfil falar a mesma língua em cada post.</p>
+      </div>
     </div>
-    <div class="ig" aria-label="Prévia do perfil no Instagram">
-      <div class="pf"><img src="assets/clube-perfil.jpg" alt="" loading="lazy"><div><b>meuclubecariri</b><span>Encontros entre amigas · Cariri</span></div></div>
-      <div class="hl"><img src="assets/clube-d1.jpg" alt="" loading="lazy"><img src="assets/clube-d2.jpg" alt="" loading="lazy"><img src="assets/clube-d3.jpg" alt="" loading="lazy"><img src="assets/clube-d4.jpg" alt="" loading="lazy"><img src="assets/clube-d5.jpg" alt="" loading="lazy"><img src="assets/clube-d6.jpg" alt="" loading="lazy"></div>
-      <div class="post"><img src="assets/clube-post.jpg" alt="Post de lançamento guarde a data" loading="lazy"></div>
+    <div class="man" aria-label="Páginas do manual de marca do Meu Clube Cariri">
+      <figure><img src="assets/clube-man06.jpg" alt="Manual: logo principal" loading="lazy" width="1600" height="900"><figcaption>Logo</figcaption></figure>
+      <figure><img src="assets/clube-man07.jpg" alt="Manual: versões do logo" loading="lazy" width="1600" height="900"><figcaption>Versões do logo</figcaption></figure>
+      <figure><img src="assets/clube-man08.jpg" alt="Manual: logo positivo e negativo" loading="lazy" width="1600" height="900"><figcaption>Cores do logo</figcaption></figure>
+      <figure><img src="assets/clube-man09.jpg" alt="Manual: paleta de cores" loading="lazy" width="1600" height="900"><figcaption>Paleta</figcaption></figure>
+      <figure><img src="assets/clube-man10.jpg" alt="Manual: tipografia" loading="lazy" width="1600" height="900"><figcaption>Tipografia</figcaption></figure>
+      <figure><img src="assets/clube-man11.jpg" alt="Manual: grafismos" loading="lazy" width="1600" height="900"><figcaption>Grafismos</figcaption></figure>
     </div>
+    <div class="strip-hint man-hint"><span class="mono">Arraste para o lado</span><span class="mono">06 páginas</span></div>
   </div>
 </div></section>
 
@@ -450,9 +475,9 @@ footer p+p{margin-top:10px}
     <h2 class="split" data-split>Empresa ou <em>perfil profissional.</em></h2>
   </div>
   <div class="aud">
-    <div class="card rv"><div class="pw"><figure class="ph"><img src="assets/ph-cafe.jpg" alt="" loading="lazy" data-par="0.12"><span class="lbl">Cafés · restaurantes · lojas</span></figure><div class="mini" aria-hidden="true"><img src="assets/gastro.jpg" alt="" loading="lazy"></div></div><div class="txt"><span class="n">A</span><h3>Negócios locais</h3><p>Restaurantes, lojas, salões e clínicas que vivem do Instagram e precisam postar com cara de marca.</p></div></div>
-    <div class="card rv d1"><div class="pw"><figure class="ph"><img src="assets/ph-clinic.jpg" alt="" loading="lazy" data-par="0.12"><span class="lbl">Consultórios · escritórios</span></figure><div class="mini" aria-hidden="true"><img src="assets/anim2.jpg" alt="" loading="lazy"></div></div><div class="txt"><span class="n">B</span><h3>Profissionais</h3><p>Advogados, médicos, dentistas, consultores e corretores que querem autoridade no vídeo e no feed.</p></div></div>
-    <div class="card rv d2"><div class="pw"><figure class="ph"><img src="assets/ph-creator.jpg" alt="" loading="lazy" data-par="0.12"><span class="lbl">Gravou no celular</span></figure><div class="mini" aria-hidden="true"><img src="assets/anim3.jpg" alt="" loading="lazy"></div></div><div class="txt"><span class="n">C</span><h3>Criadores</h3><p>Quem grava no celular e quer o resultado de um editor de verdade, sem pagar agência.</p></div></div>
+    <div class="card rv"><div class="pw"><figure class="ph"><img src="assets/real-food.jpg" alt="" loading="lazy" data-par="0.12"><span class="lbl">Cafés · restaurantes · lojas</span></figure><div class="mini" aria-hidden="true"><img src="assets/gastro.jpg" alt="" loading="lazy"></div></div><div class="txt"><span class="n">A</span><h3>Negócios locais</h3><p>Restaurantes, lojas, salões e clínicas que vivem do Instagram e precisam postar com cara de marca.</p></div></div>
+    <div class="card rv d1"><div class="pw"><figure class="ph"><img src="assets/real-brand.jpg" alt="" loading="lazy" data-par="0.12"><span class="lbl">Identidade visual · escritórios</span></figure><div class="mini" aria-hidden="true"><img src="assets/anim2.jpg" alt="" loading="lazy"></div></div><div class="txt"><span class="n">B</span><h3>Profissionais</h3><p>Advogados, médicos, dentistas, consultores e corretores que querem autoridade no vídeo e no feed.</p></div></div>
+    <div class="card rv d2"><div class="pw"><figure class="ph"><img src="assets/anim6.jpg" alt="" loading="lazy" data-par="0.12"><span class="lbl">Motion · Reels · YouTube</span></figure><div class="mini" aria-hidden="true"><img src="assets/anim3.jpg" alt="" loading="lazy"></div></div><div class="txt"><span class="n">C</span><h3>Criadores</h3><p>Quem grava no celular e quer o resultado de um editor de verdade, sem pagar agência.</p></div></div>
   </div>
 </div></section>
 
@@ -462,13 +487,38 @@ footer p+p{margin-top:10px}
     <h2 class="split" data-split>Pagou, mandou, <em>eu começo.</em></h2>
   </div>
   <div class="steps-wrap">
-  <div class="band rv"><img src="assets/ph-desk.jpg" alt="Notebook com software de edição e correção de cor aberto" loading="lazy" data-par="0.15"><div class="cap"><b>Seu material já entra na timeline.</b><span class="rec2"><i></i>Editando</span></div></div>
+  <div class="band rv"><img src="assets/real-cine.jpg" alt="Vídeo de gastronomia editado no estilo cinematográfico" loading="lazy" data-par="0.15"><div class="cap"><b>Seu material já entra na timeline.</b><span class="rec2"><i></i>Editando</span></div></div>
   <ol class="steps">
     <li class="rv now"><span class="tc">00:00</span><h3>Você garante a vaga</h3><p>Pix ou cartão. No mesmo checkout você marca os extras que quiser.</p></li>
     <li class="rv d1"><span class="tc">00:01</span><h3>Abre o WhatsApp</h3><p>Logo depois do pagamento aparece o botão para falar comigo. Você manda logo, fotos, vídeos e o que vende.</p></li>
     <li class="rv d2"><span class="tc">00:02</span><h3>A edição começa na hora</h3><p>Sem fila de agência. Recebi o material, já estou editando.</p></li>
     <li class="rv d3"><span class="tc">Entrega</span><h3>Você aprova e posta</h3><p>Kit em até 3 dias úteis, pacote completo em até 7. Uma rodada de ajuste em cada peça.</p></li>
   </ol>
+  </div>
+  <div class="wa-box rv" id="whatsapp">
+    <p class="mono" style="color:#5be08f">Atendimento pelo WhatsApp</p>
+    <h3 style="margin-top:10px">Compre e receba agora uma <em>gestão completa</em> pelo seu WhatsApp.</h3>
+    <p>Assim que o pagamento cai, eu chamo você no WhatsApp. Tudo acontece por lá, sem formulário e sem reunião.</p>
+    <ul>
+      <li>Você manda logo, fotos, vídeos e o que vende</li>
+      <li>Eu mostro as prévias e você aprova por mensagem</li>
+      <li>Os arquivos finais chegam prontos para postar</li>
+    </ul>
+    <div class="row">
+      <a class="btn wa" href="https://pay.cakto.com.br/ie2r49v_1376035">Garantir minha vaga por R$ 27,90 <span class="arr">→</span></a>
+      <a class="btn ig" data-wa hidden href="#">Tirar dúvida no WhatsApp</a>
+      <a class="btn ig" href="https://www.instagram.com/yannzheus/" target="_blank" rel="noopener">Ver portfólio no @yannzheus</a>
+    </div>
+  </div>
+</div></section>
+
+<section id="depoimentos" hidden><div class="wrap">
+  <div class="sec-head">
+    <p class="mono rv">Clientes</p>
+    <h2 class="split" data-split>Quem já garantiu <em>a vaga.</em></h2>
+  </div>
+  <div class="dep">
+    <!-- prints reais dos clientes: <figure class="rv"><img src="assets/dep-1.jpg" alt="Mensagem de cliente" loading="lazy"><figcaption>Cliente · nicho</figcaption></figure> -->
   </div>
 </div></section>
 
@@ -539,7 +589,7 @@ footer p+p{margin-top:10px}
   <details class="rv"><summary>Vocês postam por mim?</summary><p>Não nesta oferta. Você recebe tudo pronto para postar. Gestão mensal do perfil é um serviço à parte.</p></details>
 </div></section>
 
-<section class="final"><div class="bg" aria-hidden="true"><img src="assets/ph-set.jpg" alt="" loading="lazy" data-par="0.18"></div><div class="wrap">
+<section class="final"><div class="bg" aria-hidden="true"><img src="assets/bg-final.jpg" alt="" loading="lazy" data-par="0.18"></div><div class="wrap">
   <p class="mono rv">Corta para</p>
   <h2 class="split" data-split style="margin-top:14px">Seu próximo post, <em>bem editado.</em></h2>
   <div class="cta-stack rv d1" style="margin-top:28px">
@@ -551,8 +601,10 @@ footer p+p{margin-top:10px}
 <footer><div class="wrap">
   <p>Promoção de Black Friday válida até 30/11/2026 às 23h59 (horário de Brasília) ou até o fim das 30 vagas, o que acontecer primeiro. Prazos de entrega contados a partir do envio completo do material. Resultados de alcance e vendas dependem de cada negócio e não são garantidos.</p>
   <p>Marca na Vitrine · Atendimento pelo WhatsApp após a compra</p>
-  <p class="credit">Fotos de ambiente: Unsplash (licença livre). Vídeos e artes: portfólio próprio.</p>
+  <p class="credit">Vídeos, artes e manual de marca: portfólio próprio. Portfólio completo no Instagram <a href="https://www.instagram.com/yannzheus/" target="_blank" rel="noopener">@yannzheus</a>.</p>
 </div></footer>
+
+<a class="wa-fab" data-wa hidden href="#" aria-label="Falar no WhatsApp"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C8.8 3 3 8.7 3 15.8c0 2.5.7 4.9 2 7L3 29l6.4-2c2 1.1 4.3 1.7 6.6 1.7 7.2 0 13-5.7 13-12.8S23.2 3 16 3zm0 23.4c-2.1 0-4.1-.6-5.9-1.7l-.4-.3-3.8 1.2 1.2-3.7-.3-.4c-1.2-1.8-1.8-3.8-1.8-5.9C5 9.8 9.9 5.1 16 5.1s11 4.7 11 10.6-4.9 10.7-11 10.7zm6-7.9c-.3-.2-2-1-2.3-1.1-.3-.1-.5-.2-.8.2-.2.3-.9 1.1-1.1 1.3-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.7-1.7-1-.9-1.7-2-1.9-2.3-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.6.1-.2 0-.4 0-.6l-1-2.5c-.3-.7-.5-.6-.8-.6h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.7 5.8 5.1 2.9 1.1 3.5.9 4.1.8.6-.1 2-.8 2.3-1.6.3-.8.3-1.5.2-1.6-.1-.1-.3-.2-.7-.4z"/></svg></a>
 
 <div class="dock" id="dock">
   <div class="l"><span class="mono">Black Friday</span><b>R$ 27,90</b></div>
@@ -639,6 +691,12 @@ footer p+p{margin-top:10px}
   function sd(){dock.classList.toggle('on',!hv&&!fv)}
   new IntersectionObserver(function(e){hv=e[0].isIntersecting;sd()}).observe(hero);
   new IntersectionObserver(function(e){fv=e[0].isIntersecting;sd()}).observe(fin);
+
+  // WhatsApp: preencha WA com DDI+DDD+número (só dígitos) para mostrar os botões
+  var WA='';
+  if(WA){var wl='https://wa.me/'+WA+'?text='+encodeURIComponent('Oi! Vi a promoção Marca na Vitrine e tenho uma dúvida.');document.querySelectorAll('[data-wa]').forEach(function(a){a.href=wl;a.target='_blank';a.rel='noopener';a.hidden=false});}
+  // depoimentos: a seção só aparece quando houver prints reais
+  var dep=document.getElementById('depoimentos'); if(dep&&dep.querySelector('.dep figure'))dep.hidden=false;
 
   // carry the ad's UTMs to the checkout so UTMify can attribute the sale
   var qs=location.search.replace(/^\?/,'');
