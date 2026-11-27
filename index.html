@@ -230,11 +230,11 @@ footer p+p{margin-top:10px}
 .wa-fab svg{width:28px;height:28px;fill:#fff}
 .ig-line{display:flex;align-items:center;gap:8px;margin-top:16px;font-size:14px;color:var(--muted)}
 .ig-line a{color:var(--text);font-weight:600;text-decoration:none;border-bottom:1px solid var(--line2)}
-.dep{display:grid;gap:14px}
+.dep{display:grid;grid-auto-flow:column;grid-auto-columns:78%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 var(--gut) 8px;margin:0 calc(var(--gut)*-1);align-items:start;scrollbar-width:none}.dep::-webkit-scrollbar{display:none}.dep figure{scroll-snap-align:center}
 .dep figure{margin:0;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#111}
 .dep img{width:100%;height:auto}
 .dep figcaption{padding:10px 14px;font-size:13px;color:var(--muted)}
-@media (min-width:760px){.wa-box{padding:40px}.wa-box .row{grid-template-columns:auto auto;justify-content:start}.dep{grid-template-columns:repeat(3,1fr)}}
+@media (min-width:760px){.wa-box{padding:40px}.wa-box .row{grid-template-columns:auto auto;justify-content:start}.dep{grid-auto-flow:row;grid-template-columns:repeat(4,1fr);overflow:visible;margin:0;padding:0}}
 [hidden]{display:none!important}
 
 /* ===== depth layer: real photos, device mockups, parallax ===== */
@@ -514,11 +514,14 @@ footer p+p{margin-top:10px}
 
 <section id="depoimentos" hidden><div class="wrap">
   <div class="sec-head">
-    <p class="mono rv">Clientes</p>
-    <h2 class="split" data-split>Quem já garantiu <em>a vaga.</em></h2>
+    <p class="mono rv">Clientes reais · nomes ocultos</p>
+    <h2 class="split" data-split>4 vagas já foram. <em>Veja o que disseram.</em></h2>
   </div>
   <div class="dep">
-    <!-- prints reais dos clientes: <figure class="rv"><img src="assets/dep-1.jpg" alt="Mensagem de cliente" loading="lazy"><figcaption>Cliente · nicho</figcaption></figure> -->
+    <figure class="rv"><img src="assets/dep-1.jpg" alt="Clientes elogiando o vídeo de apresentação no WhatsApp: ficou bom, top de verdade" loading="lazy" width="1080" height="1000"><figcaption>Vídeo de apresentação · empresa de software</figcaption></figure>
+    <figure class="rv d1"><img src="assets/dep-2.jpg" alt="Cliente sobre o manual de marca: adorei, ficou perfeito" loading="lazy" width="1080" height="1159"><figcaption>Manual de marca · Meu Clube Cariri</figcaption></figure>
+    <figure class="rv d2"><img src="assets/dep-3.jpg" alt="Cliente arquiteto: ficou absurdo de bom" loading="lazy" width="1080" height="1356"><figcaption>Vídeo · escritório de arquitetura</figcaption></figure>
+    <figure class="rv d3"><img src="assets/dep-4.jpg" alt="Cliente: absurdo a apresentação" loading="lazy" width="1080" height="655"><figcaption>Apresentação em vídeo · software</figcaption></figure>
   </div>
 </div></section>
 
@@ -530,7 +533,7 @@ footer p+p{margin-top:10px}
   <div class="offer-grid">
     <div class="rv">
       <div class="ticket">
-        <div class="row"><span class="mono">Kit Marca na Vitrine</span><span class="badge">30 vagas</span></div>
+        <div class="row"><span class="mono">Kit Marca na Vitrine</span><span class="badge">Restam 26 de 30</span></div>
         <p class="big" style="margin-top:14px">R$ 27,90</p>
         <p class="mono" style="margin-top:6px">pagamento único</p>
         <ul>
@@ -595,7 +598,7 @@ footer p+p{margin-top:10px}
   <div class="cta-stack rv d1" style="margin-top:28px">
     <a class="btn" href="https://pay.cakto.com.br/ie2r49v_1376035" id="cta-final">Começar por R$ 27,90 <span class="arr">→</span></a>
   </div>
-  <p class="fine rv d2">Pix ou cartão · 30 vagas · até 30/11 às 23h59</p>
+  <p class="fine rv d2">Pix ou cartão · restam 26 de 30 vagas · até 30/11 às 23h59</p>
 </div></section>
 
 <footer><div class="wrap">
@@ -693,7 +696,7 @@ footer p+p{margin-top:10px}
   new IntersectionObserver(function(e){fv=e[0].isIntersecting;sd()}).observe(fin);
 
   // WhatsApp: preencha WA com DDI+DDD+número (só dígitos) para mostrar os botões
-  var WA='';
+  var WA='5588997910423';
   if(WA){var wl='https://wa.me/'+WA+'?text='+encodeURIComponent('Oi! Vi a promoção Marca na Vitrine e tenho uma dúvida.');document.querySelectorAll('[data-wa]').forEach(function(a){a.href=wl;a.target='_blank';a.rel='noopener';a.hidden=false});}
   // depoimentos: a seção só aparece quando houver prints reais
   var dep=document.getElementById('depoimentos'); if(dep&&dep.querySelector('.dep figure'))dep.hidden=false;
