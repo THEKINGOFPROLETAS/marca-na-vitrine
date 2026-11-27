@@ -341,6 +341,19 @@ footer p+p{margin-top:10px}
   *{animation:none!important;transition:none!important}
   .rv{opacity:1;transform:none}.split .w>span{transform:none}
 }
+.xo{position:fixed;inset:0;z-index:90;display:grid;place-items:center;padding:16px;background:rgba(5,5,6,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;transition:opacity .25s var(--ease)}
+.xo.on{opacity:1}
+.xo-card{position:relative;width:100%;max-width:420px;background:var(--bg2);border:1px solid var(--line2);border-radius:22px;padding:28px 22px 22px;box-shadow:0 30px 80px -20px rgba(0,0,0,.8);transform:translateY(12px);transition:transform .3s var(--ease)}
+.xo.on .xo-card{transform:none}
+.xo-x{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;border:0;background:transparent;color:var(--muted);font-size:22px;cursor:pointer}
+.xo h3{font-family:var(--serif);font-weight:400;font-size:34px;line-height:1.02;letter-spacing:-.01em;margin-top:10px}
+.xo p{color:var(--muted);margin-top:10px}
+.xo form{display:grid;gap:10px;margin-top:18px}
+.xo input{width:100%;min-height:54px;border-radius:14px;border:1px solid var(--line2);background:#0b0b0c;color:var(--text);font:inherit;font-size:18px;padding:0 16px;outline:none}
+.xo input:focus{border-color:#25d366}
+.xo .btn{border:0;cursor:pointer;font:inherit;font-weight:600}
+.xo-no{background:none;border:0;color:var(--dim);font:inherit;font-size:13px;margin-top:4px;cursor:pointer;text-decoration:underline}
+.xo-err{color:var(--rec);font-size:13px;min-height:1em}
 </style>
 <!-- Meta Pixel -->
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','3687414584755759');fbq('track','PageView');</script>
@@ -614,6 +627,21 @@ footer p+p{margin-top:10px}
   <a class="btn" href="https://pay.cakto.com.br/ie2r49v_1376035" id="cta-dock">Garantir vaga →</a>
 </div>
 
+<div class="xo" id="xo" hidden role="dialog" aria-modal="true" aria-labelledby="xo-t">
+  <div class="xo-card">
+    <button class="xo-x" type="button" data-xo-close aria-label="Fechar">×</button>
+    <span class="mono">Espera aí</span>
+    <h3 id="xo-t">Antes de sair, vamos negociar no WhatsApp?</h3>
+    <p>Deixa seu número que eu te mando uma oferta melhor.</p>
+    <form id="xo-f" novalidate>
+      <input id="xo-n" type="tel" inputmode="tel" autocomplete="tel" placeholder="(DDD) 9 0000-0000" aria-label="Seu WhatsApp">
+      <div class="xo-err" id="xo-e"></div>
+      <button class="btn wa" type="submit">Quero a oferta melhor <span class="arr">→</span></button>
+      <button class="xo-no" type="button" data-xo-close>Não, obrigado</button>
+    </form>
+  </div>
+</div>
+
 <script>
 (function(){
   // split headings into words
@@ -707,6 +735,44 @@ footer p+p{margin-top:10px}
 
   // pixel: checkout clicks
   document.querySelectorAll('a[href*="pay.cakto"]').forEach(function(a){a.addEventListener('click',function(){try{fbq('track','InitiateCheckout')}catch(e){}})});
+  // aviso de saída: só 1 vez, nunca para quem já pagou (obrigado.html grava mnv_paid)
+  (function(){
+    var xo=document.getElementById('xo');if(!xo||!WA)return;
+    function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
+    if(ls('mnv_paid')||ls('mnv_exit'))return;
+    var armed=false,shown=false,trap=false,t0=Date.now();
+    setTimeout(function(){armed=true},6000);
+    function show(){
+      if(shown||ls('mnv_paid')||ls('mnv_exit'))return false;
+      shown=true;ls('mnv_exit','1');xo.hidden=false;requestAnimationFrame(function(){xo.classList.add('on')});
+      try{fbq('trackCustom','ExitIntent')}catch(e){}
+      return true;
+    }
+    function hide(){xo.classList.remove('on');setTimeout(function(){xo.hidden=true},250)}
+    xo.addEventListener('click',function(e){if(e.target===xo||e.target.hasAttribute('data-xo-close'))hide()});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!xo.hidden)hide()});
+    // computador: mouse sai pelo topo (indo fechar a aba ou trocar de página)
+    document.addEventListener('mouseout',function(e){if(armed&&!e.relatedTarget&&e.clientY<=0)show()});
+    // celular: botão voltar
+    if(matchMedia('(hover:none),(pointer:coarse)').matches&&history.pushState){
+      function arm(){if(trap)return;trap=true;try{history.pushState({mnvx:1},'',location.href)}catch(e){}}
+      ['touchstart','scroll'].forEach(function(ev){window.addEventListener(ev,arm,{once:true,passive:true})});
+      window.addEventListener('popstate',function(){if(!show())history.back()});
+    }
+    var n=document.getElementById('xo-n'),er=document.getElementById('xo-e');
+    n.addEventListener('input',function(){var d=n.value.replace(/\D/g,'').slice(0,11),o=d;
+      if(d.length>2)o='('+d.slice(0,2)+') '+d.slice(2);
+      if(d.length>7)o='('+d.slice(0,2)+') '+d.slice(2,d.length-4)+'-'+d.slice(-4);
+      n.value=o});
+    document.getElementById('xo-f').addEventListener('submit',function(e){
+      e.preventDefault();var d=n.value.replace(/\D/g,'');
+      if(d.length<10){er.textContent='Coloca seu número com DDD.';n.focus();return}
+      er.textContent='';
+      try{fbq('track','Lead')}catch(x){}
+      var msg='Oi! Estava saindo da página da Marca na Vitrine e quero a oferta melhor. Meu WhatsApp: '+n.value;
+      location.href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
+    });
+  })();
 })();
 </script>
 </body>
